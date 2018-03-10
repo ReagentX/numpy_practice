@@ -1,5 +1,6 @@
 import numpy as np
 
+
 a = np.arange(11)
 b = np.arange(11)
 print(a)
