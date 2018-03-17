@@ -18,6 +18,7 @@ print(d_norm[:5])
 # Real normalization might have messy data, so we need to check for negatives
 def check_norm(x):
     '''Returns True if the normalization is between 0 and 1 else False'''
-    return True if len(d_norm[(d_norm < 0) ^ (d_norm > 1)]) == 0 else False
+    
+    return True if len(x[(x < 0) ^ (x > 1)]) == 0 else False
 
 print('Normalization success' if check_norm(d_norm) else 'Normalization failiure')
