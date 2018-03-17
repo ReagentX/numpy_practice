@@ -5,6 +5,7 @@ url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 # Ignore the text column since it is pesky
 data = np.genfromtxt(url, delimiter=',', dtype='float', usecols=(0, 1, 2, 3))
 
+# False if there are no np.nan elements present
 validate = lambda x: np.isnan(x).any()
 
 # Generate an array of rows and columns
