@@ -14,3 +14,10 @@ print(d[:5])
 d_norm = d / np.max(d)
 np.set_printoptions(precision=2)
 print(d_norm[:5])
+
+# Real normalization might have messy data, so we need to check for negatives
+def check_norm(x):
+    '''Returns True if the normalization is between 0 and 1 else False'''
+    return True if len(d_norm[(d_norm < 0) ^ (d_norm > 1)]) == 0 else False
+
+print('Normalization success' if check_norm(d_norm) else 'Normalization failiure')
