@@ -18,7 +18,14 @@ print(d_norm[:5])
 # Real normalization might have messy data, so we need to check for negatives
 def check_norm(x):
     '''Returns True if the normalization is between 0 and 1 else False'''
-    
     return True if len(x[(x < 0) ^ (x > 1)]) == 0 else False
 
 print('Normalization success' if check_norm(d_norm) else 'Normalization failiure')
+
+# Do this the right way
+data_pd = pd.read_csv(url, names=['sepallength', 'sepalwidth', 'petallength', 'petalwidth', 'species'])
+# Access the proper column using the name `data_pd['species']`
+d_pd = data_pd['sepallength']
+d_pd_norm = d_pd/d_pd.max()
+print(d_pd_norm.head())
+print('Normalization success' if check_norm(d_pd_norm) else 'Normalization failiure')
