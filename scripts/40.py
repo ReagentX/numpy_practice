@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
@@ -14,3 +15,12 @@ new_col = np.array([bins_text[bin] for bin in bins]).reshape(len(bins),1)
 data = np.append(data, new_col, axis=1)
 
 print(data[::25])
+
+# The right way to do this
+data_pd = pd.read_csv(url, names=['sepallength', 'sepalwidth', 'petallength', 'petalwidth', 'species'])
+labels = ['small', 'medium', 'large']
+
+# `pd.cut` slices the column `data_pd['petallength']` to a group based on the array
+# Labels come from whichever bin the data fall into
+data_pd['group'] = pd.cut(data_pd['petallength'], [0, 3, 5, np.inf], right=False, labels=labels)
+print(data_pd[::25])
