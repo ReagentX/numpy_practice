@@ -20,7 +20,11 @@ print(data[::25])
 data_pd = pd.read_csv(url, names=['sepallength', 'sepalwidth', 'petallength', 'petalwidth', 'species'])
 labels = ['small', 'medium', 'large']
 
-# `pd.cut` slices the column `data_pd['petallength']` to a group based on the array
-# Labels come from whichever bin the data fall into
+'''
+`pd.cut` slices the column `data_pd['petallength']` to a group based on the array
+Labels come from whichever bin the data fall into
+`right = false` means the bins do not include the rightmost edge, i.e. for [0, 3] it go up to 3 but does not include it
+'''
+
 data_pd['group'] = pd.cut(data_pd['petallength'], [0, 3, 5, np.inf], right=False, labels=labels)
 print(data_pd[::25])
