@@ -2,3 +2,4 @@ bin/*
 lib/*
 *.cfg
 pip-selfcheck.json
+.vscode/settings.json
