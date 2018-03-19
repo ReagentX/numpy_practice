@@ -11,8 +11,8 @@ bins = np.digitize(data[..., 2], [3, 5, np.inf])
 bins_text = ['small', 'medium', 'large']
 
 # Use list compression to generate the list of bins, reshape so that it is vertical, then append to the data array
-new_col = np.array([bins_text[bin] for bin in bins]).reshape(len(bins),1)
-data = np.append(data, new_col, axis=1)
+new_col = np.array([bins_text[bin] for bin in bins])[:, np.newaxis]
+data = np.hstack([data, new_col])
 
 print(data[::25])
 
