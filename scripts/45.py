@@ -5,14 +5,14 @@ from collections import Counter
 
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 
-# Get all columns as objects so we can understand the last column
+# Get all columns as floats since we ignore the last column
 data = np.genfromtxt(url, delimiter=',', dtype='float')
 
 # Pure python
 print(f'Python:\t{Counter(data[..., 2]).most_common(1)[0]}')
 
 # NumPy
-# Using `return_counts=True` also returns the counts of the unique values
+# Using `return_counts=True` also returns the counts of the unique values, so we capture both
 vals, counts = np.unique(data[..., 2], return_counts=True)
 # `np.argmax(counts)` returns the index of the position that is the largest in `counts`
 print(f'NumPy:\t{vals[np.argmax(counts)]}, {max(counts)}')
