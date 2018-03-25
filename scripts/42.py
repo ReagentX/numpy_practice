@@ -26,10 +26,11 @@ data_pd = pd.read_csv(url, names=['sepallength', 'sepalwidth', 'petallength', 'p
 
 # Sample based on weights from the species column
 print('Pandas:')
+p_pd = {'Iris-setosa': 0.25, 'Iris-versicolor': 0.25, 'Iris-virginica': 0.5}  # The weights for each sample
 
-# Generate relative sizes to sample the proper number based on the number of samples
-# The 50 here should not be static, but I cannot think of a way to map the `value_counts` of each species to the probabilities
-sizes = dict(zip(data_pd['species'].unique(), [(x * n) / 50 for x in p]))
+# Generate relative sizes to sample the proper number based on the number of samples using dict compression
+# `len(data_pd[data_pd['species'] == x]` gets the column `data_pd['species']` and uses advanced indexing to get those that match `p_pd`
+sizes = {x: (p_pd[x] * n) / len(data_pd[data_pd['species'] == x]) for x in p_pd}
 
 '''
 Group by species and select only the species column, then apply a function to each group
