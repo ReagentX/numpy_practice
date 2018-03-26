@@ -3,7 +3,6 @@ import numpy as np
 
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 data = np.genfromtxt(url, delimiter=',', dtype='str', usecols=4)
-np.random.seed(100)
 d_s = np.sort(np.random.choice(data, size=20))
 
 r = []
