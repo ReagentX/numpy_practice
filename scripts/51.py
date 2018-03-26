@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 # Generate the random array between two values and display it
@@ -14,3 +15,8 @@ one_hot = np.eye(len(u))
 encoded = np.array([one_hot[np.where(u == x)][0] for x in a])
 print('NumPy:')
 print(encoded)
+
+# Pandas example
+s = pd.get_dummies(a)
+print('Pandas:')
+print(s)
