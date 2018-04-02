@@ -11,4 +11,11 @@ print('NumPy:')
 # Loop through all of the unique values
 for i in np.unique(data[..., 4]):
     # Use advanced indexing to pull column [1] from the rows where column 4 is i
-    print(f'{i}: \t{data[data[..., 4] == i, [1]].astype(float).mean():.3f}')
+    print(f'{i.decode()}:\t{data[data[..., 4] == i, [1]].astype(float).mean():.3f}')
+
+# Pandas example
+data_pd = pd.read_csv(url, names=['sepallength', 'sepalwidth', 'petallength', 'petalwidth', 'species'])
+
+# Specifying `['sepalwidth']` means we ignore the other columns
+print('Pandas:')
+print(data_pd.groupby(['species'])['sepalwidth'].mean())
