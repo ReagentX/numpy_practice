@@ -8,7 +8,7 @@ print(a)
 a = list(a)
 
 '''
-Use comprehension to solve this
+Use comprehension to solve this more easily than using NumPy
 By enumerating the list, we can index the list up to the current item to check for duplicates
 This way we fulfill the requirement of making the first occurance False
 '''
