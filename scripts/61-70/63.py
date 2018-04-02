@@ -10,3 +10,7 @@ for i, v in enumerate(a):
         b.append(i)
 
 print(b)
+
+# Python comprehension
+c = [i for i, v in enumerate(a) if a[max(i-1, 0)] < v and a[min(len(a)-1, i+1)] < v]
+print(c)
