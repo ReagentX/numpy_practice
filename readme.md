@@ -13,3 +13,4 @@ After setting up a [virtual environment](https://docs.python.org/3/library/venv.
 - Lesson 49 seems especially silly, if a better solution exists please open an issue or pull request.
 - Lesson 53 uses a very different solution than that given in the blog post.
 - Lesson 58 uses a very different solution than that given in the blog post.
+- Lesson 60 requires installation of `requests` and `image`, easily done through `pip`.
